@@ -1,52 +1,43 @@
 package ru.job4j.puzzle;
 
 public class Win {
-    public static boolean check(int[][] board) {
-        boolean rsl = true;
-        if (checkColumn(board) == false && checkRow(board) == false) {
-            rsl = false;
-        };
-        return rsl;
-    }
-    public static boolean checkRow(int[][] arr) {
-        boolean result = false;
-        int sum = 0;
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
-                if (arr[i][j] == 1) {
-                    sum++;
-                }
-
+    public static boolean monoHorizontal(int[][] board, int row) {
+        boolean result = true;
+        for (int j = 0; j < board.length; j++) {
+            if (board[row][j] != 1) {
+                result = false;
+                break;
             }
-            if (sum != 5 ) {
-                sum = 0;
-            }
-
-        }
-        if (sum== 5) {
-            result = true;
         }
         return result;
     }
 
-    public static boolean checkColumn(int[][] arr) {
-        boolean result = false;
-        int sum = 0;
-        int row = 0;
-        int col =0;
-        while (col < arr.length && row < arr.length){
-            if (arr[col][row] ==1) {
-                sum++;
-                col++;
-            }else{
-                col = 0;
-                row++;
-                sum = 0;
+    public static boolean monoVertical(int[][] board, int column) {
+        boolean result = true;
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][column] != 1) {
+                result = false;
+                break;
             }
-
         }
-        if (sum== 5) {
-            result = true;
+        return result;
+    }
+
+    public static int[] extractDiagonal(int[][] board) {
+        int[] rsl = new int[board.length];
+        for (int i = 0; i < board.length; i++) {
+            rsl[i] = board[i][i];
+        }
+        return rsl;
+    }
+
+    public static boolean check(int[][] board) {
+        boolean result = false;
+        for (int index = 0; index < board.length; index++) {
+            if (board[index][index] == 1 && (monoHorizontal(board, index) || monoVertical(board, index))) {
+                result = true;
+                break;
+            }
         }
         return result;
     }
