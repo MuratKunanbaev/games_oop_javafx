@@ -27,7 +27,7 @@ public final class Logic {
             if (figure != null) {
                 for (Cell cell : steps) {
                     if (figure.position().equals(cell)) {
-                        throw new OccupiedCellException("hgfhd");
+                        throw new OccupiedCellException("Occupied cell");
                     }
                 }
             }

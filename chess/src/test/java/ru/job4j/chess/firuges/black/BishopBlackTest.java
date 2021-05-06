@@ -35,5 +35,4 @@ public class BishopBlackTest {
         BishopBlack bishopBlack = new BishopBlack(Cell.D4);
         bishopBlack.way(Cell.G4);
     }
-
 }
