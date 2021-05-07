@@ -27,7 +27,6 @@ public class LogicTest {
         Logic logic = new Logic();
         logic.add(new BishopBlack(Cell.B1));
         logic.move(Cell.B1, Cell.G1);
-
     }
 
     @Test(expected = OccupiedCellException.class)
